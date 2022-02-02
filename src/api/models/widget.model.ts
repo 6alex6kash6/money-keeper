@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-//TODO: add ref field to budget
 
 const widgetSchema = new Schema({
   name: {
@@ -13,14 +12,15 @@ const widgetSchema = new Schema({
   widgetWidth: {
     type: Number,
   },
-  //   budget: {
-  //     required: true,
-  //     type: Number,
-  //   },
+  budget: {
+    required: true,
+    type: Schema.Types.ObjectId,
+    ref: "Budgets",
+  },
   dateRange: {
     from: Date,
     to: Date,
   },
 });
 
-export const Widget = model("widgets", widgetSchema);
+export const Widget = model("Widgets", widgetSchema);

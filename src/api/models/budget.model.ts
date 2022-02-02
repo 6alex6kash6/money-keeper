@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-//TODO: add ref field to user
 
 const budgetSchema = new Schema({
   name: {
@@ -15,6 +14,11 @@ const budgetSchema = new Schema({
     required: true,
     type: Number,
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: "Users",
+  },
 });
 
-export const Budget = model("budgets", budgetSchema);
+export const Budget = model("Budgets", budgetSchema);
