@@ -1,5 +1,12 @@
 import { Schema, model } from "mongoose";
 
+interface WidgetDocument {
+  name: string;
+  widgetType: number;
+  widgetWidth: number;
+  dateRange: { from: string; to: string };
+}
+
 const widgetSchema = new Schema({
   name: {
     required: true,
@@ -23,4 +30,6 @@ const widgetSchema = new Schema({
   },
 });
 
-export const Widget = model("Widgets", widgetSchema);
+const Widget = model("Widgets", widgetSchema);
+
+export { Widget, WidgetDocument };

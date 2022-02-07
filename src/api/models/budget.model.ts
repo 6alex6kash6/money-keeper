@@ -1,5 +1,11 @@
 import { Schema, model } from "mongoose";
 
+interface BudgetDocument {
+  name: string;
+  wallet: string;
+  value: number;
+}
+
 const budgetSchema = new Schema({
   name: {
     required: true,
@@ -16,9 +22,11 @@ const budgetSchema = new Schema({
   },
   owner: {
     type: Schema.Types.ObjectId,
-    required: true,
+    // required: true,
     ref: "Users",
   },
 });
 
-export const Budget = model("Budgets", budgetSchema);
+const Budget = model("Budgets", budgetSchema);
+
+export { Budget, BudgetDocument };

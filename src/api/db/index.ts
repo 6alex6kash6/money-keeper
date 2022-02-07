@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
-const DB_STRING = "mongodb://localhost:27017/money-keeper";
-
+const DB_STRING = "mongodb://127.0.0.1:27017/money-keeper";
+// const options: mongoose.ConnectOptions = {
+//   useCreateIndex: true,
+//   useNewUrlParser: true,
+//   useFindAndModify: false,
+// };
 try {
   mongoose.connect(DB_STRING);
   console.log("Connected succesfully");

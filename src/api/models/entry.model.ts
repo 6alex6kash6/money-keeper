@@ -1,5 +1,13 @@
 import { Schema, model } from "mongoose";
 
+interface EntryDocument {
+  name: string;
+  entryType: number;
+  category: number;
+  value: number;
+  date: string;
+}
+
 const entrySchema = new Schema({
   name: {
     required: true,
@@ -28,4 +36,6 @@ const entrySchema = new Schema({
   },
 });
 
-export const Entry = model("Entries", entrySchema);
+const Entry = model("Entries", entrySchema);
+
+export { Entry, EntryDocument };

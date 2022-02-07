@@ -1,5 +1,10 @@
 import { Schema, model } from "mongoose";
 
+interface UserDocument {
+  email: string;
+  password: string;
+}
+
 const userSchema = new Schema({
   email: {
     type: String,
@@ -17,4 +22,5 @@ const userSchema = new Schema({
   },
 });
 
-export const User = model("Users", userSchema);
+const User = model("Users", userSchema);
+export { User, UserDocument };
