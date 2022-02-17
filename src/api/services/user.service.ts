@@ -1,20 +1,13 @@
 import { User, UserDocument } from "../models";
+import DataService from "./DataAccess.service";
 
-interface IBudgetService {
-  add({
-    name,
-    wallet,
-    value,
-  }: {
-    name: string;
-    wallet: string;
-    value: number;
-  }): Promise<UserDocument>;
-}
-class UserService implements IBudgetService {
-  async add({ name, wallet, value }) {
-    const budget = new User({ name, wallet, value });
-    return await budget.save();
+const dataService = new DataService(User);
+
+interface IUserService {}
+class UserService implements IUserService {
+  async add({ email, password }) {
+    const user = await dataService.create({ email, password });
+    return user;
   }
 }
 

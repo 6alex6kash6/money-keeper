@@ -29,7 +29,7 @@ const entrySchema = new Schema({
     required: true,
     type: Date,
   },
-  budget: {
+  budgetId: {
     required: true,
     type: Schema.Types.ObjectId,
     ref: "Budgets",

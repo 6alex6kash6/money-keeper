@@ -20,6 +20,10 @@ const userSchema = new Schema({
     minLength: 8,
     trim: true,
   },
+  // refreshToken: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 const User = model("Users", userSchema);

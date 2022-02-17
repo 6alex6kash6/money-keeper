@@ -1,7 +1,13 @@
+import { UserService } from "../services";
+
+const userService = new UserService();
 class UserController {
   constructor() {}
 
-  addUser(req, res) {}
+  async addUser(req, res) {
+    const result = await userService.add(req.body);
+    res.send(result);
+  }
 
   editUser(req, res) {}
 
