@@ -1,8 +1,10 @@
 import { Schema, model } from "mongoose";
+const bcrypt = require("bcrypt");
 
 interface UserDocument {
   email: string;
   password: string;
+  refreshTokens: Array<string>;
 }
 
 const userSchema = new Schema({
@@ -20,10 +22,14 @@ const userSchema = new Schema({
     minLength: 8,
     trim: true,
   },
-  // refreshToken: {
-  //   type: String,
-  //   required: true,
-  // },
+});
+
+userSchema.pre("save", async function (next) {
+  const user = this;
+
+  if (user.isModified("password")) {
+    user.password = await bcrypt.hash(user.password, 8);
+  }
 });
 
 const User = model("Users", userSchema);

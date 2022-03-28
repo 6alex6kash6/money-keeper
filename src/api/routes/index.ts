@@ -1,6 +1,6 @@
 import budgetRouter from "./budget.route";
-import userRoute from "./user.route";
+import authRoute from "./auth.route";
 import entryRoute from "./entry.route";
 import widgetRoute from "./widget.route";
 
-export { budgetRouter, userRoute, entryRoute, widgetRoute };
+export { budgetRouter, authRoute, entryRoute, widgetRoute };

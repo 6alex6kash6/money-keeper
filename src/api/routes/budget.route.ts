@@ -1,10 +1,12 @@
 import express from "express";
 import { BudgetController } from "../controllers";
+import { authenticateJwt } from "../utils/auth/strategies";
 
 const budgetRouter = express.Router();
 const budgetController = new BudgetController();
 
-budgetRouter.post("/api/budget", budgetController.addBudget);
+// @ts-ignore
+budgetRouter.post("/api/budget", authenticateJwt, budgetController.addBudget);
 
 budgetRouter.patch("/api/budget", budgetController.editBudget);
 

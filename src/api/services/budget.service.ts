@@ -14,6 +14,7 @@ interface IBudgetService {
     wallet: string;
     value: number;
   }): Promise<BudgetDocument | BudgetServiceError>;
+
   edit({
     budgetId,
     updates,
@@ -21,9 +22,12 @@ interface IBudgetService {
     budgetId: string;
     updates: object;
   }): Promise<BudgetDocument | BudgetServiceError>;
+
   get(userId: string): Promise<BudgetDocument[] | BudgetServiceError>;
+
   delete(budgetId: string): Promise<void | BudgetServiceError>;
 }
+
 class BudgetService implements IBudgetService {
   async add({
     name,
